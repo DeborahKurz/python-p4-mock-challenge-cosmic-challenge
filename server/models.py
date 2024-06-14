@@ -25,7 +25,7 @@ class Planet(db.Model, SerializerMixin):
     distance_from_earth = db.Column(db.Integer)
     nearest_star = db.Column(db.String)
 
-    mission = db.relationship('Mission', backref='planet', cascade="all, delete-orphan")
+    missions = db.relationship('Mission', backref='planet', cascade="all, delete-orphan")
 
     serialize_rules = ('-scientists.planets', '-missions.planet')
 
@@ -87,5 +87,3 @@ class Mission(db.Model, SerializerMixin):
 
 
 # add any models you may need.
-
-# serialize_rules = ('-missions.scientist_id',)
